@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import WrapContainer from '../../components/WrapContainer'
+import Mainimg from '../../components/Mainimg';
 
 function Header() {
   return (
@@ -9,10 +10,12 @@ function Header() {
       <WrapContainer>
         <nav>
           <div>
-            <span>로고자리</span>
-            <Link to={"/"}>
-              <span>쇼핑</span>
-            </Link>
+            <span>
+              <Mainimg /> 
+            </span>
+            <span>
+              <Link to={"/"}>쇼핑</Link>
+            </span>
           </div>
           <div>
             <Link to={"/login"}>
@@ -33,8 +36,12 @@ const HeaderWrap = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    div {
+      display: flex;
+      align-items: center;
+    }
     span {
-      margin-right: 10px;
+      margin-right: 20px;
     }
   }
 `;
