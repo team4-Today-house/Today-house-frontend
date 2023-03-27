@@ -3,10 +3,7 @@ import { cookies } from '../shared/cookies'
 
 
 const api = axios.create({
-    baseURL:"http://3.38.244.133",
-    headers:{
-      "Access-Control-Allow-Origin": "*",
-    },
+    baseURL:"http://3.38.244.133:8080",
     // timeout: 1,
     // 오류 확인 가능한지 테스트.. 1밀리세컨드.. 내에 응답을 못받으면 에러처리 하도록 돼 있음.
 })
@@ -16,8 +13,8 @@ const api = axios.create({
 api.interceptors.request.use(
   // 요청을 보내기 전 수행되는 함수
   function (config) {
-    const token = cookies.get("token")
-    config.headers["authorization"] = `Bearer ${token}`;
+    // const token = cookies.get("token")
+    // config.headers["Authorization"] = `Bearer ${token}`;
     return config
   },
 
