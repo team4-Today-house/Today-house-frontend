@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from '../pages/Home'
+import Home from '../pages/Home/Home'
 
 function Router() {
   return (
@@ -11,4 +11,4 @@ function Router() {
   )
 }
 
-export default Router
+export default Router;
