@@ -13,12 +13,10 @@ function WrapContainer({children}) {
 
 const Wrap = styled.div`
   width: 100vw;
-  background-color: #558624;
 `;
 
 const Container = styled.div`
   width: 1135px;
-  background-color: #ff80c0;
   margin: auto;
 `;
 

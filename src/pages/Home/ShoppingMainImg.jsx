@@ -8,6 +8,7 @@ function ShoppingMainImg() {
         <img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/store/banners/store_home_banners/167955763057772309.png?w=2560" alt="" />
       </ShoppingMainImgDiv>
     </a>
+    
   )
 };
 

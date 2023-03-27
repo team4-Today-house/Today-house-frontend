@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { icons, iconSize, StarIcon } from './Icons';
+import { icons, StarIcon } from './Icons';
 
 export function CategoryItem({children}) {
   return (
@@ -69,8 +69,8 @@ const CategoryItemProductContainer = styled.article`
   width: 268px;
   height: 441px;
   border-radius: 5px;
-  background-color: #ffeeee;
   overflow: hidden;
+  border: 1px solid pink;
 
   .margin5 {
     margin-bottom: 5px;
@@ -98,7 +98,6 @@ const CategoryItemProductContainer = styled.article`
       width: 268px;
       height: 268px;
       border-radius: 5px;
-      border: 1px solid #EF4A7A;
       object-fit: cover;
     }
   }
