@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { __loginUser } from "../../redux/modules/login";
 import styled from "styled-components";
 import Mainimg from "../../components/Mainimg";
@@ -8,6 +8,8 @@ import Sns from "./Sns";
 import Button, { btnStyle } from "../../components/Button";
 
 function Login() {
+  const navi = useNavigate();
+
   const [user, setUser] = useState({
     loginId: "",
     password: "",
@@ -28,15 +30,11 @@ function Login() {
         onSubmit={async (e) => {
           e.preventDefault();
           await dispacth(__loginUser(user));
-          navigator("/");
+          navi("/");
         }}
       >
         <div>
-          <Mainimg 
-            height={"50"} 
-            logo={true}
-            text={true}
-          />
+          <Mainimg height={"50"} logo={true} text={true} />
         </div>
         <div>
           <InputStyle
@@ -57,10 +55,7 @@ function Login() {
           />
         </div>
         <div>
-          <Button 
-            style={btnStyle.loginBtn}
-            width={"100%"}
-          >
+          <Button style={btnStyle.loginBtn} width={"100%"}>
             로그인
           </Button>
         </div>
@@ -96,7 +91,6 @@ const LoginBox = styled.form`
 const InputStyle = styled.input`
   position: relative;
   display: block;
-  transition: 0.2s box-shadow, 0.2s background-color;
   width: 100%;
   padding: 13px 15px 14px;
   border-radius: 4px 4px 0 0;
