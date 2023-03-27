@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from '../pages/Login/Login'
 import SignUp from '../pages/SignUp/SignUp'
 import Home from '../pages/Home/Home'
-
 function Router() {
   return (
     <BrowserRouter>
@@ -15,4 +14,4 @@ function Router() {
   )
 }
 
-export default Router;
+export default Router
