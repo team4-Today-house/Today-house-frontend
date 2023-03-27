@@ -1,20 +1,84 @@
 {
-  "users": [
-    {
-      "loginId": "ndame12",
-      "password": "passwor1!",
-      "email": "aaaa123@naver.com",
-      "passwordcheck":"passwor1!"  
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
+  "products": [
+  {
+    "productId" : "id1",
+    "brandName" : "브랜드명",
+    "categoryName" : "카테고리 명",
+    "title" : "타이틀",
+    "discountRate" : 42,
+    "price" : 16700,
+    "reviewCount" : 12,
+    "imgSrc" : "imgSrc"
+  },
+  {
+    "id" : "id2",
+    "brandName" : "브랜드명",
+    "categoryName" : "카테고리 명",
+    "title" : "타이틀",
+    "discountRate" : 58,
+    "price" : 8200,
+    "reviewCount" : 43,
+    "imgSrc" : "imgSrc"
+  },
+  {
+    "productId" : "id3",
+    "brandName" : "브랜드명",
+    "categoryName" : "카테고리 명",
+    "title" : "타이틀",
+    "discountRate" : 42,
+    "price" : 16700,
+    "reviewCount" : 12,
+    "imgSrc" : "imgSrc"
+  },
+  {
+    "id" : "id4",
+    "brandName" : "브랜드명",
+    "categoryName" : "카테고리 명",
+    "title" : "타이틀",
+    "discountRate" : 58,
+    "price" : 8200,
+    "reviewCount" : 43,
+    "imgSrc" : "imgSrc"
+  },
+  {
+    "productId" : "id5",
+    "brandName" : "브랜드명",
+    "categoryName" : "카테고리 명",
+    "title" : "타이틀",
+    "discountRate" : 42,
+    "price" : 16700,
+    "reviewCount" : 12,
+    "imgSrc" : "imgSrc"
+  },
+  {
+    "id" : "id6",
+    "brandName" : "브랜드명",
+    "categoryName" : "카테고리 명",
+    "title" : "타이틀",
+    "discountRate" : 58,
+    "price" : 8200,
+    "reviewCount" : 43,
+    "imgSrc" : "imgSrc"
+  },
+  {
+    "productId" : "id7",
+    "brandName" : "브랜드명",
+    "categoryName" : "카테고리 명",
+    "title" : "타이틀",
+    "discountRate" : 42,
+    "price" : 16700,
+    "reviewCount" : 12,
+    "imgSrc" : "imgSrc"
+  },
+  {
+    "id" : "id2",
+    "brandName" : "브랜드명",
+    "categoryName" : "카테고리 명",
+    "title" : "타이틀",
+    "discountRate" : 58,
+    "price" : 8200,
+    "reviewCount" : 43,
+    "imgSrc" : "imgSrc"
   }
-}
+  ]
+  }

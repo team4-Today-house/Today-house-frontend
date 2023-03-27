@@ -2,49 +2,76 @@ import React from 'react'
 import styled from 'styled-components'
 import { icons, StarIcon } from './Icons';
 
-export function CategoryItem({children}) {
+export function CategoryItem({src, children}) {
   return (
-    <div>
+    <a href='#'>
       <CategoryWrap>
         <img 
           className='category-img'
-          src="https://image.ohou.se/i/bucketplace-v2-development/uploads/category/store_home_categories/165698403420736265.png?gif=1&w=144&h=144&c=c" 
+          src={`${src}`}
           alt={`${children}`}
         />
         {children}
       </CategoryWrap>
-    </div>
+    </a>
   )
 }
 
+export const productCategory = [
+  {
+    name: "가구",
+    imgUrl: "https://image.ohou.se/i/bucketplace-v2-development/uploads/category/store_home_categories/165698403420736265.png?gif=1&w=144&h=144&c=c&webp=1",
+  },
+  {
+    name: "가전",
+    imgUrl: "https://image.ohou.se/i/bucketplace-v2-development/uploads/category/store_home_categories/166072985530266073.png?gif=1&w=144&h=144&c=c&webp=1",
+  },
+  {
+    name: "주방용품",
+    imgUrl: "https://image.ohou.se/i/bucketplace-v2-development/uploads/category/store_home_categories/165443714334272236.png?gif=1&w=144&h=144&c=c&webp=1",
+  },
+  {
+    name: "생활용품",
+    imgUrl: "https://image.ohou.se/i/bucketplace-v2-development/uploads/category/store_home_categories/165519431107541334.png?gif=1&w=144&h=144&c=c&webp=1",
+  },
+];
+
 const CategoryWrap = styled.div`
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   .category-img {
     width: 80px;
     height: 80px;
-    object-fit: cover;
   }
 `;
 
-export const CategoryItemProduct = () => {
-  return(
-    <CategoryItemProductContainer>
-      <div className="oneday-sale">
+export const CategoryItemProduct = ({oneSale, title, brandName, imgUrl, src}) => {
+  const OnedaySaleIcon = () => {
+    return (
+      <OnedaySale>
         <label>1DAY</label>
         <label>SALE</label>
-      </div>
-      <article>
-        <img
-          className='product-img'
-          src="https://image.ohou.se/i/bucketplace-v2-development/uploads/deals/166935874331363376.jpg?gif=1&w=360&h=360&c=c&q=0.8&webp=1" 
-          alt="" 
-        />
-        <CategoryProductContent>
+      </OnedaySale>
+    );
+  }
+
+  return(
+    <CategoryItemProductContainer>
+      { oneSale && <OnedaySaleIcon/> }
+      <CategoryProductContent>
+        <div className='product-img-wrap'>
+          <img
+            className='product-img'
+            src={`${src}`}
+            alt="" 
+          />
+        </div>
+        <div className='product-content-wrap'>
           <label className='product-brand-name margin5'>브랜드명</label>
           <h6 className='product-name margin5'>
-            제품명제품명제품명제품명제품명제품명제품명
+            제품명제품명제품명제품명제품명제품명제품명제품명제품명제품명제품명제품명제품명제품명
           </h6>
           <span className='margin5'>
             <label className='product-discount-rate'>42%</label>
@@ -59,11 +86,27 @@ export const CategoryItemProduct = () => {
             <label className='product-star'>4.8</label>
             <label className='product-review-num'>리뷰 1,010</label>
           </span>
-        </CategoryProductContent>
-      </article>
+        </div>
+      </CategoryProductContent>
     </CategoryItemProductContainer>
   );
 }
+
+const OnedaySale = styled.div`
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #EF4A7A;
+  label {
+    font-size: 20px;
+    color: #ffff;
+  }
+`;
 
 const CategoryItemProductContainer = styled.article`
   width: 268px;
@@ -75,45 +118,39 @@ const CategoryItemProductContainer = styled.article`
   .margin5 {
     margin-bottom: 5px;
   }
-
-  .oneday-sale {
-    width: 70px;
-    height: 70px;
-    position: absolute;
-    box-sizing: border-box;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #EF4A7A;
-    label {
-      font-size: 20px;
-      color: #ffff;
-    }
-  }
-
-  article {
-    .product-img {
-      width: 268px;
-      height: 268px;
-      border-radius: 5px;
-      object-fit: cover;
-    }
-  }
 `;
 
 const CategoryProductContent = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  .product-brand-name {
-    color: var(--brand-name-color-gray);
-    font-size: 10px;
+
+  .product-img-wrap {
+    overflow: hidden;
+    .product-img {
+      width: 268px;
+      height: 268px;
+      border-radius: 5px;
+      object-fit: cover;
+      transition: all 0.2s linear;
+      :hover {
+        transform: scale(1.15);
+      }
+    }
   }
-  .product-name {
-    color: var();
+
+  .product-content-wrap {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    .product-brand-name {
+      color: var(--brand-name-color-gray);
+      font-size: 10px;
+    }
+    .product-name {
+      color: var(--review-color-gray);
+    }
   }
+
   span:first-of-type {
     .product-discount-rate {
       color: var(--main-color-skyblue);

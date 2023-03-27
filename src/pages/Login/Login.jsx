@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { __loginUser } from "../../redux/modules/login";
 import styled from "styled-components";
-import { ButtonStyle } from "./ButtonStyle";
 import Mainimg from "../../components/Mainimg";
 import Sns from "./Sns";
+import Button, { btnStyle } from "../../components/Button";
 
 function Login() {
   const [user, setUser] = useState({
@@ -32,7 +32,11 @@ function Login() {
         }}
       >
         <div>
-          <Mainimg />
+          <Mainimg 
+            height={"50"} 
+            logo={true}
+            text={true}
+          />
         </div>
         <div>
           <InputStyle
@@ -53,7 +57,12 @@ function Login() {
           />
         </div>
         <div>
-          <LoginButton>로그인</LoginButton>
+          <Button 
+            style={btnStyle.loginBtn}
+            width={"100%"}
+          >
+            로그인
+          </Button>
         </div>
         <div>
           <Link to={"/signup"}>회원가입</Link>
@@ -65,31 +74,6 @@ function Login() {
     </LoginContain>
   );
 }
-
-const LoginButton = styled.button`
-  width: 100%;
-  margin: 20px 0;
-  padding: 15px 10px;
-  line-height: 20px;
-  font-size: 17px;
-  min-height: 50px;
-  background-color: #35c5f0;
-  border-color: #35c5f0;
-  color: #fff;
-  box-sizing: border-box;
-  position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 700;
-  text-align: center;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 4px;
-  transition: color 0.1s ease 0s, background-color 0.1s ease 0s,
-    border-color 0.1s ease 0s;
-  cursor: pointer;
-`;
 
 const LoginContain = styled.div`
   display: flex;
