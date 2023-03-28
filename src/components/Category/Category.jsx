@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
-import { ThemeContext } from '../utils/context';
-import { icons, StarIcon } from './Icons';
+import { ThemeContext } from '../../utils/context';
+import { icons, StarIcon } from '../Icons';
 
 export function CategoryItem({imgUrl, children}) {
   const { isDark } = useContext(ThemeContext);
@@ -28,25 +28,6 @@ export function CategoryItem({imgUrl, children}) {
   )
 }
 
-export const productCategory = [
-  {
-    name: "가구",
-    imgUrl: "https://image.ohou.se/i/bucketplace-v2-development/uploads/category/store_home_categories/165698403420736265.png?gif=1&w=144&h=144&c=c&webp=1",
-  },
-  {
-    name: "가전",
-    imgUrl: "https://image.ohou.se/i/bucketplace-v2-development/uploads/category/store_home_categories/166072985530266073.png?gif=1&w=144&h=144&c=c&webp=1",
-  },
-  {
-    name: "주방용품",
-    imgUrl: "https://image.ohou.se/i/bucketplace-v2-development/uploads/category/store_home_categories/165443714334272236.png?gif=1&w=144&h=144&c=c&webp=1",
-  },
-  {
-    name: "생활용품",
-    imgUrl: "https://image.ohou.se/i/bucketplace-v2-development/uploads/category/store_home_categories/165519431107541334.png?gif=1&w=144&h=144&c=c&webp=1",
-  },
-];
-
 const CategoryWrap = styled.div`
   overflow: hidden;
   display: flex;
@@ -63,8 +44,8 @@ const CategoryWrap = styled.div`
   }
 `;
 
-export const CategoryItemProduct = (props) => {
-  const {oneSale, hotitemId, title, brandname, discountrate, price, img} = props;
+export const CategoryItemProduct = ({item, oneSale}) => {
+  const {title, brandname, discountrate, price, img} = item;
   const onErrorImg = (e) => {
     e.target.src = `${process.env.PUBLIC_URL}/default-img.jpg`;
   }
@@ -98,10 +79,10 @@ export const CategoryItemProduct = (props) => {
           </h6>
           <span className='margin5'>
             <label className='product-discount-rate'>
-              {discountrate}%
+              {discountrate}
             </label>
             <label className='product-price'>
-              {price} 외
+              {price}
             </label>
           </span>
           <span className='margin5'>
@@ -138,21 +119,24 @@ const OnedaySale = styled.div`
   }
 `;
 
-const CategoryItemProductContainer = styled.article`
+export const CategoryItemProductContainer = styled.article`
   width: 268px;
   height: 441px;
   border-radius: 5px;
   overflow: hidden;
-  border: 1px solid pink;
 
   .margin5 {
     margin-bottom: 5px;
   }
 `;
 
-const CategoryProductContent = styled.div`
+export const CategoryProductContent = styled.div`
   display: flex;
   flex-direction: column;
+  
+  label {
+    line-height: 200%;
+  }
 
   .product-img-wrap {
     overflow: hidden;

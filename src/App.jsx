@@ -9,6 +9,8 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
+      staleTime: 3000,
+      retry: 0,
     }
   }
 });
@@ -16,11 +18,11 @@ const queryClient = new QueryClient({
 function App() {
   const [ isDark, setIsDark ] = useState(false);
   return (
-    <ThemeContext.Provider value={{isDark, setIsDark}}>
-      <QueryClientProvider client ={queryClient}>
+    <QueryClientProvider client ={queryClient}>
+      <ThemeContext.Provider value={{isDark, setIsDark}}>
         <Router />
-      </QueryClientProvider>
-    </ThemeContext.Provider>
+      </ThemeContext.Provider>
+    </QueryClientProvider>
   )
 }
 

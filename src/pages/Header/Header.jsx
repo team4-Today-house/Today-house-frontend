@@ -9,7 +9,6 @@ import { ThemeContext } from '../../utils/context';
 function Header() {
   const { isDark } = useContext(ThemeContext);
   let bgc = darkMode(isDark);
-  console.log(bgc);
   let color = darkMode(!isDark);
 
   return (
