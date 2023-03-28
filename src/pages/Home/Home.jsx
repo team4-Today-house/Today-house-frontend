@@ -11,14 +11,15 @@ import { useGetHotItems } from "../../apis/hooks/useGetHotItems";
 import { useGetProducts } from "../../apis/hooks/useGetProducts";
 import { productCategory } from "../../components/Category/productCategory";
 import { CategoryItemWrap, CategoryWrap, HomeWrap, ShoppingMainImgContainer } from "./StyledHome";
+import { useScroll } from "../../apis/hooks/useScroll";
 
 function Home() {
   const { isDark } = useContext(ThemeContext);
   let bgc = darkMode(isDark);
   let color = darkMode(!isDark);
-
   const { products, getProducts, getProductsIsLoading, getProductsIsError, getProductsErrorMsg } = useGetProducts();
   const { hotItems, getHotItemsIsLoading } = useGetHotItems();
+  const {y} = useScroll();
 
   useEffect(() => {
     getProducts();
