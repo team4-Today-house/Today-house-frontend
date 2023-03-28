@@ -1,9 +1,10 @@
 import React from "react";
+import { KAKAO_AUTH_URL } from "../../shared/KakaoLogin";
 
 function Sns() {
   return (
     <div>
-      <a datatype="kakao" href="http://localhost:8080/kakao/callback">
+      <a datatype="kakao" href={KAKAO_AUTH_URL}>
         <svg width="48" height="48" viewBox="0 0 48 48">
           <g fill="none" fillRule="evenodd">
             <path
