@@ -2,83 +2,83 @@
   "products": [
   {
     "productId" : "id1",
-    "brandName" : "브랜드명",
-    "categoryName" : "카테고리 명",
-    "title" : "타이틀",
+    "brandName" : "브랜드명1",
+    "categoryName" : "카테고리 명1",
+    "title" : "타이틀1",
     "discountRate" : 42,
     "price" : 16700,
     "reviewCount" : 12,
-    "imgSrc" : "imgSrc"
+    "imgUrl" : "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/166788130355735072.jpg?gif=1&w=360&h=360&c=c&q=0.8&webp=1"
   },
   {
-    "id" : "id2",
-    "brandName" : "브랜드명",
-    "categoryName" : "카테고리 명",
-    "title" : "타이틀",
+    "productId" : "id2",
+    "brandName" : "브랜드명2",
+    "categoryName" : "카테고리 명2",
+    "title" : "타이틀2",
     "discountRate" : 58,
     "price" : 8200,
     "reviewCount" : 43,
-    "imgSrc" : "imgSrc"
+    "imgUrl" : "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/167168822852557476.jpg?gif=1&w=360&h=360&c=c&q=0.8&webp=1"
   },
   {
     "productId" : "id3",
-    "brandName" : "브랜드명",
-    "categoryName" : "카테고리 명",
-    "title" : "타이틀",
+    "brandName" : "브랜드명3",
+    "categoryName" : "카테고리 명3",
+    "title" : "타이틀3",
     "discountRate" : 42,
     "price" : 16700,
     "reviewCount" : 12,
-    "imgSrc" : "imgSrc"
+    "imgUrl" : "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/162303132447303472.jpeg?gif=1&w=360&h=360&c=c&q=0.8&webp=1"
   },
   {
-    "id" : "id4",
-    "brandName" : "브랜드명",
-    "categoryName" : "카테고리 명",
-    "title" : "타이틀",
+    "productId" : "id4",
+    "brandName" : "브랜드명4",
+    "categoryName" : "카테고리 명4",
+    "title" : "타이틀4",
     "discountRate" : 58,
     "price" : 8200,
     "reviewCount" : 43,
-    "imgSrc" : "imgSrc"
+    "imgUrl" : "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/163339551420208507.jpg?gif=1&w=360&h=360&c=c&q=0.8&webp=1"
   },
   {
     "productId" : "id5",
-    "brandName" : "브랜드명",
-    "categoryName" : "카테고리 명",
-    "title" : "타이틀",
+    "brandName" : "브랜드명5",
+    "categoryName" : "카테고리 명5",
+    "title" : "타이틀5",
     "discountRate" : 42,
     "price" : 16700,
     "reviewCount" : 12,
-    "imgSrc" : "imgSrc"
+    "imgUrl" : "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/167505954569058804.jpg?gif=1&w=360&h=360&c=c&q=0.8&webp=1"
   },
   {
     "id" : "id6",
-    "brandName" : "브랜드명",
-    "categoryName" : "카테고리 명",
-    "title" : "타이틀",
+    "brandName" : "브랜드명6",
+    "categoryName" : "카테고리 명6",
+    "title" : "타이틀6",
     "discountRate" : 58,
     "price" : 8200,
     "reviewCount" : 43,
-    "imgSrc" : "imgSrc"
+    "imgUrl" : "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/167505954569058804.jpg?gif=1&w=360&h=360&c=c&q=0.8&webp=1"
   },
   {
     "productId" : "id7",
-    "brandName" : "브랜드명",
-    "categoryName" : "카테고리 명",
-    "title" : "타이틀",
-    "discountRate" : 42,
+    "brandName" : "브랜드명7",
+    "categoryName" : "카테고리 명7",
+    "title" : "타이틀7",
+    "discountRate" : 73,
     "price" : 16700,
     "reviewCount" : 12,
-    "imgSrc" : "imgSrc"
+    "imgUrl" : "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/167713968456650373.jpg?gif=1&w=360&h=360&c=c&q=0.8&webp=1"
   },
   {
-    "id" : "id2",
-    "brandName" : "브랜드명",
-    "categoryName" : "카테고리 명",
-    "title" : "타이틀",
-    "discountRate" : 58,
+    "productId" : "id8",
+    "brandName" : "브랜드명8",
+    "categoryName" : "카테고리 명8",
+    "title" : "타이틀8",
+    "discountRate" : 90,
     "price" : 8200,
     "reviewCount" : 43,
-    "imgSrc" : "imgSrc"
+    "imgUrl" : "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/1554432441250_K6wX5dopzz.jpg?gif=1&w=360&h=360&c=c&q=0.8&webp=1"
   }
   ]
   }
