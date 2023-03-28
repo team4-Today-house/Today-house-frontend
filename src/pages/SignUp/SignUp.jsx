@@ -54,7 +54,7 @@ function SignUp() {
   return (
     <>
       <header>
-        <Mainimg />
+        <Mainimg height={40} logo={true} text={true} />
       </header>
       <SignContain>
         <SignBox onSubmit={submitButtonHandler}>
