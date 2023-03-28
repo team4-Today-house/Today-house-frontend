@@ -16,11 +16,7 @@ export function CategoryItem({imgUrl, children}) {
           src={`${imgUrl}`}
           alt={`${children}`}
         />
-        <label
-          style={{
-            color: color,
-          }}
-        >
+        <label style={{color: color}}>
           {children}
         </label>
       </CategoryWrap>

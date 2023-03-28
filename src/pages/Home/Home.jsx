@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { darkMode } from "../../components/DarkMode";
 import { ThemeContext } from "../../utils/context";
@@ -10,21 +10,25 @@ import ShoppingMainImg from "./ShoppingMainImg";
 import { useGetHotItems } from "../../apis/hooks/useGetHotItems";
 import { useGetProducts } from "../../apis/hooks/useGetProducts";
 import { productCategory } from "../../components/Category/productCategory";
+import Loading from "../../components/Loading";
 
 function Home() {
   const { isDark } = useContext(ThemeContext);
   let bgc = darkMode(isDark);
   let color = darkMode(!isDark);
 
-  
-  const { products, getProductsIsLoading, getProductsIsError } = useGetProducts();
+  const { products, getProducts, getProductsIsLoading, getProductsIsError } = useGetProducts();
   const { hotItems, getHotItemsIsLoading } = useGetHotItems();
 
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   if(!hotItems || !products || getHotItemsIsLoading || getProductsIsLoading) {
-    return <div>로딩중</div>;
+    return <Loading/>;
   }
   if(getProductsIsError) {
-    console.log("데이터 못 받아옴..")
+    console.log("데이터 못 받아옴..");
   };
 
   return (
@@ -47,7 +51,7 @@ function Home() {
           <CategoryItemWrap>
             {
               hotItems?.map((item) => 
-                <CategoryItemProduct key={item.hotitemId} item={item} oneSale={true}/>
+                <CategoryItemProduct key={item.title} item={item} oneSale={true}/>
               )
             }
           </CategoryItemWrap>
@@ -69,7 +73,7 @@ function Home() {
           <CategoryItemWrap>
           {
             products?.map((item) =>
-              <CategoryItemProduct key={item.productId} item={item}/>
+              <CategoryItemProduct key={item.title} item={item}/>
             )
           }
           </CategoryItemWrap>

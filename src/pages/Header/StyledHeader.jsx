@@ -6,6 +6,9 @@ export const HeaderWrap = styled.header`
   z-index: 9999;
   position: fixed;
   top: 0;
+  label {
+    font-size: 20px;
+  }
   nav {
     height: ${headerHeight.height}px;
     display: flex;
@@ -18,6 +21,7 @@ export const HeaderWrap = styled.header`
     span {
       font-weight: 600;
     }
+    
     .header-left {
       span {
         margin-right: 20px;
