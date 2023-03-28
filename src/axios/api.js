@@ -3,7 +3,7 @@ import { cookies } from '../shared/cookies'
 
 
 const api = axios.create({
-    baseURL:"http://3.38.244.133:8080",
+    baseURL:`${process.env.REACT_APP_SERVER_URL}`,
     // timeout: 1,
     // 오류 확인 가능한지 테스트.. 1밀리세컨드.. 내에 응답을 못받으면 에러처리 하도록 돼 있음.
 })

@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import Button, { btnStyle } from "../../components/Button";
 import { CategoryItem, CategoryItemProduct, productCategory } from "../../components/Category";
 import WrapContainer from "../../components/WrapContainer";
-import Header, { headerHeight } from "../Header/Header";
+import { darkMode } from "../../components/DarkMode";
+import { ThemeContext } from "../../utils/context";
+import Header from "../Header/Header";
+import { headerHeight } from "../Header/StyledHeader";
 import ShoppingMainImg from "./ShoppingMainImg";
 
 function Home() {
+  const { isDark } = useContext(ThemeContext);
+  let bgc = darkMode(isDark);
+  let color = darkMode(!isDark);
+
   return (
-    <HomeWrap>
+    <HomeWrap
+      style={{
+        backgroundColor: bgc,
+        color: color,
+      }}
+    >
       {/* 헤더 */}
       <Header />
       {/* 쇼핑 메인 이미지 */}
@@ -20,7 +31,7 @@ function Home() {
         <CategoryWrap>
           {
             productCategory.map((item) =>
-              <CategoryItem src={item.imgUrl}>
+              <CategoryItem key={item.name} imgUrl={item.imgUrl}>
                 {item.name}
               </CategoryItem>
             )
@@ -29,10 +40,8 @@ function Home() {
         <div>
           <h4>오늘의 딜</h4>
           <CategoryItemWrap>
-            <CategoryItemProduct src={"#"} oneSale={true}/>
-            {/* <CategoryItemProduct oneSale={true}/>
-            <CategoryItemProduct oneSale={true}/>
-            <CategoryItemProduct oneSale={true}/> */}
+            {}
+            <CategoryItemProduct item={""} oneSale={true}/>
           </CategoryItemWrap>
         </div>
         <div>
@@ -40,7 +49,7 @@ function Home() {
           <CategoryWrap>
           {
             productCategory.map((item) =>
-              <CategoryItem src={item.imgUrl}>
+              <CategoryItem key={item.name} imgUrl={item.imgUrl}>
                 {item.name}
               </CategoryItem>
             )
@@ -60,18 +69,21 @@ const HomeWrap = styled.div`
   h4 {
     font-size: 20px;
     font-weight: 900;
+    margin: 15px 0;
   }
 `;
 
 const ShoppingMainImgContainer = styled.div`
   width: 100vw;
+  min-width: 1135px;
   display: flex;
   justify-content: center;
+  margin-bottom: 40px;
 `;
 
 const CategoryWrap = styled.nav`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   /* overflow: scroll; */
 `;
 

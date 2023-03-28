@@ -1,52 +1,49 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
 import WrapContainer from '../../components/WrapContainer'
 import Mainimg from '../../components/Mainimg';
+import { HeaderWrap } from './StyledHeader';
+import DarkMode, { darkMode } from '../../components/DarkMode';
+import { ThemeContext } from '../../utils/context';
 
 function Header() {
+  const { isDark } = useContext(ThemeContext);
+  let bgc = darkMode(isDark);
+  console.log(bgc);
+  let color = darkMode(!isDark);
+
   return (
-    <HeaderWrap>
+    <HeaderWrap style={{
+      backgroundColor: bgc,
+      color: color,
+      borderBottom: `1px solid ${color}`
+    }}>
       <WrapContainer>
         <nav>
-          <div>
+          <div className='header-left'>
             <span>
               <Mainimg text={true} height={"40"}/>
             </span>
+            <Link to={"/"}>
+              <span>
+                <label style={{color: color}}>쇼핑</label>
+              </span>
+            </Link>
+          </div>
+          <div className='header-right'>
+            <Link to={"/login"}>
+              <span>
+                <label style={{color: color}}>로그인</label>
+              </span>
+            </Link>
             <span>
-              <Link to={"/"}>쇼핑</Link>
+              <DarkMode/>
             </span>
           </div>
-          <Link to={"/login"}>
-            <span>로그인</span>
-          </Link>
         </nav>
       </WrapContainer>
     </HeaderWrap>
   )
 }
-
-export const headerHeight = { height: 80 };
-
-const HeaderWrap = styled.header`
-  z-index: 9999;
-  position: fixed;
-  top: 0;
-  border-bottom: 1px solid black;
-  background-color: #fff;
-  nav {
-    height: ${headerHeight.height}px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    div {
-      display: flex;
-      align-items: center;
-    }
-    span {
-      margin-right: 20px;
-    }
-  }
-`;
 
 export default Header

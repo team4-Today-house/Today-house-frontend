@@ -1,19 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
+import { ThemeContext } from '../utils/context';
 import { icons, StarIcon } from './Icons';
 
-export function CategoryItem({src, children}) {
+export function CategoryItem({imgUrl, children}) {
+  const { isDark } = useContext(ThemeContext);
+  let color = isDark && "#fff";
+
   return (
-    <a href='#'>
+    <Link to={"#"}>
       <CategoryWrap>
-        <img 
+        <img
           className='category-img'
-          src={`${src}`}
+          src={`${imgUrl}`}
           alt={`${children}`}
         />
-        {children}
+        <label
+          style={{
+            color: color,
+          }}
+        >
+          {children}
+        </label>
       </CategoryWrap>
-    </a>
+    </Link>
   )
 }
 
@@ -41,13 +52,22 @@ const CategoryWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
   .category-img {
     width: 80px;
     height: 80px;
+    margin-bottom: 10px;
+  }
+  label {
+    font-weight: 600;
   }
 `;
 
-export const CategoryItemProduct = ({oneSale, title, brandName, imgUrl, src}) => {
+export const CategoryItemProduct = (props) => {
+  const {oneSale, hotitemId, title, brandname, discountrate, price, img} = props;
+  const onErrorImg = (e) => {
+    e.target.src = `${process.env.PUBLIC_URL}/default-img.jpg`;
+  }
   const OnedaySaleIcon = () => {
     return (
       <OnedaySale>
@@ -64,18 +84,25 @@ export const CategoryItemProduct = ({oneSale, title, brandName, imgUrl, src}) =>
         <div className='product-img-wrap'>
           <img
             className='product-img'
-            src={`${src}`}
-            alt="" 
+            src={`${img}`}
+            alt={title}
+            onError={onErrorImg}
           />
         </div>
         <div className='product-content-wrap'>
-          <label className='product-brand-name margin5'>브랜드명</label>
+          <label className='product-brand-name margin5'>
+            {brandname}
+          </label>
           <h6 className='product-name margin5'>
-            제품명제품명제품명제품명제품명제품명제품명제품명제품명제품명제품명제품명제품명제품명
+            {title}
           </h6>
           <span className='margin5'>
-            <label className='product-discount-rate'>42%</label>
-            <label className='product-price'>27,900 외</label>
+            <label className='product-discount-rate'>
+              {discountrate}%
+            </label>
+            <label className='product-price'>
+              {price} 외
+            </label>
           </span>
           <span className='margin5'>
             <StarIcon 
@@ -84,7 +111,9 @@ export const CategoryItemProduct = ({oneSale, title, brandName, imgUrl, src}) =>
               color={icons.star.filledColor}
             />
             <label className='product-star'>4.8</label>
-            <label className='product-review-num'>리뷰 1,010</label>
+            <label className='product-review-num'>
+              리뷰 1,020
+            </label>
           </span>
         </div>
       </CategoryProductContent>
@@ -102,6 +131,7 @@ const OnedaySale = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #EF4A7A;
+
   label {
     font-size: 20px;
     color: #ffff;
@@ -126,6 +156,8 @@ const CategoryProductContent = styled.div`
 
   .product-img-wrap {
     overflow: hidden;
+    width: 268px;
+    height: 268px;
     .product-img {
       width: 268px;
       height: 268px;
