@@ -9,6 +9,8 @@ export const useGetHotItems = () => {
     queryKeys: queryKeys.GET_HOTITEMS,
     queryFn: async () => {
       const {data} = await api.get(`/api/hotitem`);
+      
+      console.log("핫아이템",data);
       return data;
     },
     onSuccess: () => {

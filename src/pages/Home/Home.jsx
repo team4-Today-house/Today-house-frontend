@@ -11,6 +11,7 @@ import { useGetHotItems } from "../../apis/hooks/useGetHotItems";
 import { useGetProducts } from "../../apis/hooks/useGetProducts";
 import { productCategory } from "../../components/Category/productCategory";
 import Loading from "../../components/Loading";
+import { Link } from "react-router-dom";
 
 function Home() {
   const { isDark } = useContext(ThemeContext);
@@ -44,14 +45,16 @@ function Home() {
       <ShoppingMainImgContainer>
         <ShoppingMainImg/>
       </ShoppingMainImgContainer>
-      {/* 아래 내용 */}
+      {/* 본문 */}
       <WrapContainer>
         <div>
           <h4>오늘의 딜</h4>
           <CategoryItemWrap>
             {
-              hotItems?.map((item) => 
-                <CategoryItemProduct key={item.title} item={item} oneSale={true}/>
+              hotItems?.map((item) =>
+                <Link to={`/detail/${item.hotitemId}`}>
+                  <CategoryItemProduct key={item.title} item={item} oneSale={true}/>
+                </Link>
               )
             }
           </CategoryItemWrap>
@@ -73,7 +76,9 @@ function Home() {
           <CategoryItemWrap>
           {
             products?.map((item) =>
-              <CategoryItemProduct key={item.title} item={item}/>
+              <Link to={`/detail/${item.productId}`}>
+                <CategoryItemProduct key={item.productId} item={item}/>
+              </Link>
             )
           }
           </CategoryItemWrap>
