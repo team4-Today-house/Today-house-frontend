@@ -11,13 +11,6 @@ function ShoppingMainImg() {
   )
 };
 
-const imgSrc = [
-  "https://image.ohou.se/i/bucketplace-v2-development/uploads/store/banners/store_home_banners/167955763057772309.png?w=2560",
-  "https://image.ohou.se/i/bucketplace-v2-development/uploads/store/banners/store_home_banners/167904475239865086.png?w=2560",
-  "https://image.ohou.se/i/bucketplace-v2-development/uploads/store/banners/store_home_banners/167930345144612721.png?w=2560",
-  "https://image.ohou.se/i/bucketplace-v2-development/uploads/store/banners/store_home_banners/167904429370173152.png?w=2560",
-];
-
 const ShoppingMainImgDiv = styled.div`
   /* margin: auto; */
   img {

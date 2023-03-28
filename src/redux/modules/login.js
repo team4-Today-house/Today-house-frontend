@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
 import api from '../../axios/api'
+import { cookies } from '../../shared/cookies'
+import jwt_decode from "jwt-decode"
+
 
 const initialState = {
     users: [],
@@ -10,16 +12,21 @@ const initialState = {
   }
 
 // 게시물 조회 함수
-  export const __loginUser = createAsyncThunk('loginuser', async (thatUser, thunkAPI) => {
+  export const __loginUser = createAsyncThunk(
+    'loginuser', 
+    async (thatUser, thunkAPI) => {
     try {
       console.log(thatUser)
-      const response = await api.post(`/users`,thatUser)
-      // const token = response.headers.authorization
-      // const newtoken = token.split(" ")[1]
-      // const payload = jwt_decode(newtoken);
-      // cookies.set("token", newtoken,{path:'/'})
-      // cookies.set("userId",payload.sub,{path:"/"})
-      return thunkAPI.fulfillWithValue(response.data)
+      const response = await api.post(`/api/user/login`,thatUser)
+      console.log(response)
+      const token = response.headers.authorization
+      console.log(token)
+      const newtoken = token.split(" ")[1]
+      console.log(newtoken)
+      const payload = jwt_decode(newtoken);
+      cookies.set("token", newtoken,{path:"/"})
+      cookies.set("loginId",payload.sub,{path:"/"})
+      return thunkAPI.fulfillWithValue(payload)
     } catch (error) {
       return thunkAPI.rejectWithValue(error)
     }
@@ -32,7 +39,6 @@ const loginSlice = createSlice({
 
   },
   extraReducers: {
-        // 게시물 조회 Reducer -------------------------------
         [__loginUser.pending]: (state, action) => {
             state.isLoading = true
             state.error = false
