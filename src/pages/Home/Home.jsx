@@ -6,19 +6,11 @@ import Header from "../Header/Header";
 import ShoppingMainImg from "./ShoppingMainImg";
 import { darkMode } from "../../components/DarkMode";
 import { ThemeContext } from "../../utils/context";
-import {
-  CategoryItem,
-  CategoryItemProduct,
-} from "../../components/Category/Category";
+import { CategoryItem, CategoryItemProduct } from "../../components/Category/Category";
 import { useGetHotItems } from "../../apis/hooks/useGetHotItems";
 import { useGetProducts } from "../../apis/hooks/useGetProducts";
 import { productCategory } from "../../components/Category/productCategory";
-import {
-  CategoryItemWrap,
-  CategoryWrap,
-  HomeWrap,
-  ShoppingMainImgContainer,
-} from "./StyledHome";
+import { CategoryItemWrap, CategoryWrap, HomeWrap, ShoppingMainImgContainer } from "./StyledHome";
 import { useScroll } from "../../apis/hooks/useScroll";
 
 function Home() {
@@ -64,13 +56,11 @@ function Home() {
           <CategoryItemWrap>
             {(!hotItems || getHotItemsIsLoading) && <Skeletons />}
             {hotItems?.map((item) => (
-              <Link to={`/detail/${item.hotitemId}`}>
-                <CategoryItemProduct
-                  key={item.title}
-                  item={item}
-                  oneSale={true}
-                />
-              </Link>
+              <CategoryItemProduct
+                key={item.title}
+                item={item}
+                oneSale={true}
+              />
             ))}
           </CategoryItemWrap>
         </div>
