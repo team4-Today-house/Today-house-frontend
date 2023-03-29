@@ -1,26 +1,23 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 import Slider from "react-slick";
-import { shoppingMainImgData } from './shoppingMainImgData';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { shoppingMainImgData } from "./shoppingMainImgData";
 
 function ShoppingMainImg() {
   return (
     <>
-      {
-        shoppingMainImgData.map((item) => {
-          return (
-            <a href={item.Url} key={item.id}>
-              <ShoppingMainImgDiv>
-                <img src={item.imgUrl} alt="" />
-              </ShoppingMainImgDiv>
-            </a>
-        )})
-      }
+      {shoppingMainImgData.map((item) => {
+        return (
+          <a href={item.Url} key={item.id}>
+            <ShoppingMainImgDiv>
+              <img src={item.imgUrl} alt="" />
+            </ShoppingMainImgDiv>
+          </a>
+        );
+      })}
     </>
-  )
-};
+  );
+}
 
 const ShoppingMainImgDiv = styled.div`
   img {
@@ -35,22 +32,21 @@ export const SimpleSlider = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   };
 
   return (
     <div>
       <Slider {...settings}>
-      {
-        shoppingMainImgData.map((item) => {
+        {shoppingMainImgData.map((item) => {
           return (
             <a href={item.Url} key={item.id}>
               <ShoppingMainImgDiv>
                 <img src={item.imgUrl} alt="" />
               </ShoppingMainImgDiv>
             </a>
-        )})
-      }
+          );
+        })}
         {/* <div>
           <h3>1</h3>
         </div>
@@ -72,7 +68,6 @@ export const SimpleSlider = () => {
       </Slider>
     </div>
   );
-  
-}
+};
 
-export default ShoppingMainImg
+export default ShoppingMainImg;

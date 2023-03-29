@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { HeaderWrap } from "./StyledHeader";
+import { ThemeContext } from "../../utils/context";
+import { cookies, getCookie } from "../../shared/cookies";
 import WrapContainer from "../../components/WrapContainer";
 import Mainimg from "../../components/Mainimg";
-import { HeaderWrap } from "./StyledHeader";
 import DarkMode, { darkMode } from "../../components/DarkMode";
-import { ThemeContext } from "../../utils/context";
 
 function Header() {
-  const navi = useNavigate();
-  const token = getCookie("token");
   const navi = useNavigate();
   const token = getCookie("token");
   const { isDark } = useContext(ThemeContext);
@@ -21,40 +20,88 @@ function Header() {
     e.target.style["color"] = color;
   };
 
+  const delHandler = () => {
+    cookies.remove("token");
+    window.location.reload();
+    navi("/");
+  };
+
   return (
     <HeaderWrap
       style={{
         backgroundColor: bgc,
         color: color,
-        borderBottom: `1px solid ${color}`,
+        borderBottom: `1px solid var(--header-border-color-gray)`,
       }}
     >
       <WrapContainer>
-        <nav>
-          <div className="header-left">
-            <span className="main-img">
-              <Mainimg text={true} height={"40"} />
-            </span>
-            <Link to={"/"}>
+        <nav className="header-content">
+          <div id="header-left">
+            <div id="main-logo-img">
               <span>
-                <label
-                  className="nav-shopping"
-                  style={{ color: color }}
-                  onMouseEnter={hoverHandler}
-                  onMouseLeave={unhoverHandler}
-                >
-                  쇼핑
-                </label>
+                <Mainimg text={true} height={"43"} />
               </span>
+            </div>
+            <Link to={"/"}>
+              <label
+                className="header-select"
+                style={{ color: color }}
+                onMouseEnter={hoverHandler}
+                onMouseLeave={unhoverHandler}
+              >
+                커뮤니티
+              </label>
+            </Link>
+            <Link to={"/"}>
+              <label
+                className="header-select"
+                style={{ color: color }}
+                onMouseEnter={hoverHandler}
+                onMouseLeave={unhoverHandler}
+              >
+                쇼핑
+              </label>
+            </Link>
+            <Link to={"/"}>
+              <label
+                className="header-select"
+                style={{ color: color }}
+                onMouseEnter={hoverHandler}
+                onMouseLeave={unhoverHandler}
+              >
+                이사/시공/수리
+              </label>
             </Link>
           </div>
-          <div className="header-right">
-            <Link to={"/login"}>
-              <span className="nav-login">
-                <label style={{ color: color }}>로그인</label>
-              </span>
-            </Link>
+          <div id="header-right">
             <span>
+              {token ? (
+                <label
+                  className="header-login"
+                  style={{ color: color }}
+                  onClick={(e) => {
+                    delHandler(e);
+                    navi("/");
+                  }}
+                >
+                  로그아웃
+                </label>
+              ) : (
+                <>
+                  <Link to={"/login"}>
+                    <label className="header-login" style={{ color: color }}>
+                      로그인
+                    </label>
+                  </Link>
+                  <Link to={"/signup"}>
+                    <label className="header-login" style={{ color: color }}>
+                      회원가입
+                    </label>
+                  </Link>
+                </>
+              )}
+            </span>
+            <span className="dark-mode">
               <DarkMode />
             </span>
           </div>
