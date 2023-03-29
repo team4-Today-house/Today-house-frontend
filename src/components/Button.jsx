@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-export function Button({ children, style, width, onClick }) {
+export function Button({ children, style, width, height, onClick }) {
   const [isHover, setIsHover] = useState(false);
   const mouseEnterHandler = () => {
     setIsHover(true);
@@ -9,7 +9,10 @@ export function Button({ children, style, width, onClick }) {
   const mouseLeaveHandler = () => {
     setIsHover(false);
   };
+
   style.width = width;
+  style.height = height;
+
   switch(style.style) {
     case "blueBtn":
       style.backgroundColor = isHover ? "#0480ad" : "#00bbff";

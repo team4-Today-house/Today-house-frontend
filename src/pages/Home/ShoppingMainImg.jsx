@@ -1,22 +1,78 @@
 import React from 'react'
 import styled from 'styled-components'
+import Slider from "react-slick";
+import { shoppingMainImgData } from './shoppingMainImgData';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function ShoppingMainImg() {
   return (
-    <a href='#'>
-      <ShoppingMainImgDiv>
-        <img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/store/banners/store_home_banners/167955763057772309.png?w=2560" alt="" />
-      </ShoppingMainImgDiv>
-    </a>
+    <>
+      {
+        shoppingMainImgData.map((item) => {
+          return (
+            <a href={item.Url} key={item.id}>
+              <ShoppingMainImgDiv>
+                <img src={item.imgUrl} alt="" />
+              </ShoppingMainImgDiv>
+            </a>
+        )})
+      }
+    </>
   )
 };
 
 const ShoppingMainImgDiv = styled.div`
-  /* margin: auto; */
   img {
     height: 380px;
     object-fit: cover;
   }
 `;
+
+export const SimpleSlider = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
+
+  return (
+    <div>
+      <Slider {...settings}>
+      {
+        shoppingMainImgData.map((item) => {
+          return (
+            <a href={item.Url} key={item.id}>
+              <ShoppingMainImgDiv>
+                <img src={item.imgUrl} alt="" />
+              </ShoppingMainImgDiv>
+            </a>
+        )})
+      }
+        {/* <div>
+          <h3>1</h3>
+        </div>
+        <div>
+          <h3>2</h3>
+        </div>
+        <div>
+          <h3>3</h3>
+        </div>
+        <div>
+          <h3>4</h3>
+        </div>
+        <div>
+          <h3>5</h3>
+        </div>
+        <div>
+          <h3>6</h3>
+        </div> */}
+      </Slider>
+    </div>
+  );
+  
+}
 
 export default ShoppingMainImg
