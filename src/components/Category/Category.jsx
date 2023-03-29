@@ -98,7 +98,7 @@ export const CategoryItemProduct = ({item, oneSale}) => {
   );
 }
 
-const OnedaySale = styled.div`
+export const OnedaySale = styled.div`
   width: 70px;
   height: 70px;
   position: absolute;
@@ -135,15 +135,16 @@ export const CategoryProductContent = styled.div`
   }
 
   .product-img-wrap {
-    overflow: hidden;
     width: 268px;
     height: 268px;
+    border-radius: 5px;
+    overflow: hidden;
     .product-img {
       width: 268px;
       height: 268px;
       border-radius: 5px;
       object-fit: cover;
-      transition: all 0.2s linear;
+      transition: all 0.1s linear;
       :hover {
         transform: scale(1.15);
       }

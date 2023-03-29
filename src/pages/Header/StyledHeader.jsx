@@ -24,12 +24,19 @@ export const HeaderWrap = styled.header`
     
     .header-left {
       span {
+        margin-right: 50px;
+      }
+      .header-select {
+        cursor: pointer;
         margin-right: 20px;
       }
     }
     .header-right {
       span {
         margin-left: 20px;
+      }
+      #header-login {
+        cursor: pointer;
       }
     }
   }

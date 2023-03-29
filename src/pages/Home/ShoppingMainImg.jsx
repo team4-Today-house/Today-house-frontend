@@ -1,18 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
+import { shoppingMainImgData } from './shoppingMainImgData';
 
 function ShoppingMainImg() {
   return (
-    <a href='#'>
-      <ShoppingMainImgDiv>
-        <img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/store/banners/store_home_banners/167955763057772309.png?w=2560" alt="" />
-      </ShoppingMainImgDiv>
-    </a>
+    <>
+      {
+        shoppingMainImgData.map((item) => {
+          return (
+            <a href={item.Url} key={item.id}>
+              <ShoppingMainImgDiv>
+                <img src={item.imgUrl} alt="" />
+              </ShoppingMainImgDiv>
+            </a>
+        )})
+      }
+      
+    </>
   )
 };
 
 const ShoppingMainImgDiv = styled.div`
-  /* margin: auto; */
   img {
     height: 380px;
     object-fit: cover;

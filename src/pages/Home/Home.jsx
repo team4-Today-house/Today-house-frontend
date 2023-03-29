@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Loading from "../../components/Loading";
+import { MainShoppingImgSkeleton, Skeletons } from "../../components/Loading";
 import WrapContainer from "../../components/WrapContainer";
 import Header from "../Header/Header";
 import ShoppingMainImg from "./ShoppingMainImg";
@@ -25,9 +25,6 @@ function Home() {
     getProducts();
   }, []);
 
-  if(!hotItems || !products || getHotItemsIsLoading || getProductsIsLoading) {
-    return <Loading/>;
-  }
   if(getProductsIsError) {
     alert(getProductsErrorMsg);
   };
@@ -43,6 +40,7 @@ function Home() {
       <Header />
       {/* 쇼핑 메인 이미지 */}
       <ShoppingMainImgContainer>
+        <MainShoppingImgSkeleton/>
         <ShoppingMainImg/>
       </ShoppingMainImgContainer>
       {/* 본문 */}
@@ -50,6 +48,7 @@ function Home() {
         <div>
           <h4>오늘의 딜</h4>
           <CategoryItemWrap>
+            { (!hotItems || getHotItemsIsLoading) && <Skeletons/> }
             {
               hotItems?.map((item) =>
                 <Link to={`/detail/${item.hotitemId}`}>
@@ -62,13 +61,14 @@ function Home() {
         <div>
           <h4>카테고리</h4>
           <CategoryWrap>
-          {
-            productCategory.map((item) =>
-              <CategoryItem key={item.name} imgUrl={item.imgUrl}>
-                {item.name}
-              </CategoryItem>
-            )
-          }
+            { (!products || getProductsIsLoading) && <><Skeletons/><Skeletons/></> }
+            {
+              productCategory.map((item) =>
+                <CategoryItem key={item.name} imgUrl={item.imgUrl}>
+                  {item.name}
+                </CategoryItem>
+              )
+            }
           </CategoryWrap>
         </div>
         <div>

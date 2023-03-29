@@ -21,10 +21,10 @@ function Header() {
     <HeaderWrap style={{
       backgroundColor: bgc,
       color: color,
-      borderBottom: `1px solid ${color}`
+      borderBottom: `1px solid var(--header-border-color-gray)`
     }}>
       <WrapContainer>
-        <nav>
+        <nav className='header-content'>
           <div className='header-left'>
             <span className='main-img'>
               <Mainimg text={true} height={"40"}/>
@@ -32,17 +32,35 @@ function Header() {
             <Link to={"/"}>
               <span>
                 <label 
-                  className='nav-shopping' 
+                  className='header-select'
                   style={{color: color}}
                   onMouseEnter={hoverHandler}
                   onMouseLeave={unhoverHandler}
-                >쇼핑</label>
+                >
+                  커뮤니티
+                </label>
+                <label 
+                  className='header-select'
+                  style={{color: color}}
+                  onMouseEnter={hoverHandler}
+                  onMouseLeave={unhoverHandler}
+                >
+                  쇼핑
+                </label>
+                <label 
+                  className='header-select'
+                  style={{color: color}}
+                  onMouseEnter={hoverHandler}
+                  onMouseLeave={unhoverHandler}
+                >
+                  이사/시공/수리
+                </label>
               </span>
             </Link>
           </div>
           <div className='header-right'>
             <Link to={"/login"}>
-              <span className='nav-login'>
+              <span id='header-login'>
                 <label style={{color: color}}>로그인</label>
               </span>
             </Link>
