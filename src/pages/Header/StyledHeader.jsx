@@ -29,7 +29,8 @@ export const HeaderWrap = styled.header`
         }
       }
       .header-select {
-        margin-right: 20px;
+        margin: 0 15px 0 15px;
+        font-size: 17px;
         font-weight: 600;
         cursor: pointer;
       }
