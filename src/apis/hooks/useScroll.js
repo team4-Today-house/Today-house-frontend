@@ -6,7 +6,10 @@ export const useScroll = () => {
     y: 0
   });
   const onScroll = () => {
-    console.log('y', window.scrollY, 'x', window.scrollX);
+    setScroll({
+      x: window.scrollX,
+      y: window.scrollY,
+    })
   }
   useEffect(() => {
     //scroll이벤트 생성 후 삭제
