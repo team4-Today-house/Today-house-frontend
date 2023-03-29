@@ -12,7 +12,7 @@ function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/login/oauth2/code/kakao" element={<KakaoLoginPage/>}/>
+        <Route path="/login/kakao" element={<KakaoLoginPage/>}/>
         </Routes>
     </BrowserRouter>
   )

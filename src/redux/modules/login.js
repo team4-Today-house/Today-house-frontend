@@ -16,13 +16,9 @@ const initialState = {
     'loginuser', 
     async (thatUser, thunkAPI) => {
     try {
-      console.log(thatUser)
       const response = await api.post(`/api/user/login`,thatUser)
-      console.log(response)
       const token = response.headers.authorization
-      console.log(token)
       const newtoken = token.split(" ")[1]
-      console.log(newtoken)
       const payload = jwt_decode(newtoken);
       cookies.set("token", newtoken,{path:"/"})
       cookies.set("loginId",payload.sub,{path:"/"})
