@@ -61,7 +61,6 @@ function Home() {
         <div>
           <h4>카테고리</h4>
           <CategoryWrap>
-            { (!products || getProductsIsLoading) && <><Skeletons/><Skeletons/></> }
             {
               productCategory.map((item) =>
                 <CategoryItem key={item.name} imgUrl={item.imgUrl}>
@@ -74,6 +73,7 @@ function Home() {
         <div>
           <h4>인기 상품</h4>
           <CategoryItemWrap>
+          { (!products || getProductsIsLoading) && <><Skeletons/><Skeletons/></> }
           {
             products?.map((item) =>
               <Link to={`/detail/${item.productId}`}>
