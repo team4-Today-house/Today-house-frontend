@@ -21,10 +21,15 @@ export const HeaderWrap = styled.header`
     span {
       font-weight: 600;
     }
-    
     .header-left {
-      span {
+      .main-img {
+        width: 100px;
         margin-right: 50px;
+        overflow: hidden;
+        span {
+          position: relative;
+          right: 50px;
+        }
       }
       .header-select {
         cursor: pointer;

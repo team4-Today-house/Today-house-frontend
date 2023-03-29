@@ -26,9 +26,11 @@ function Header() {
       <WrapContainer>
         <nav className='header-content'>
           <div className='header-left'>
-            <span className='main-img'>
-              <Mainimg text={true} height={"40"}/>
-            </span>
+            <div className='main-img'>
+              <span>
+                <Mainimg text={true} height={"40"}/>
+              </span>
+            </div>
             <Link to={"/"}>
               <span>
                 <label 
