@@ -12,7 +12,7 @@ function DarkMode() {
       <Button
         style={btnStyle.blueBtn}
         width={80}
-        height={35}
+        height={40}
         onClick={toggleTheme}
       >
         {isDark ? "화이트" : "다크"}

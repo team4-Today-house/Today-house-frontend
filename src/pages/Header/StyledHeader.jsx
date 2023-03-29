@@ -18,30 +18,34 @@ export const HeaderWrap = styled.header`
       display: flex;
       align-items: center;
     }
-    span {
-      font-weight: 600;
-    }
-    .header-left {
-      .main-img {
+    #header-left {
+      #main-logo-img {
         width: 100px;
-        margin-right: 50px;
+        margin-right: 25px;
         overflow: hidden;
         span {
-          position: relative;
           right: 50px;
+          position: relative;
         }
       }
       .header-select {
-        cursor: pointer;
         margin-right: 20px;
+        font-weight: 600;
+        cursor: pointer;
       }
     }
-    .header-right {
-      span {
-        margin-left: 20px;
-      }
-      #header-login {
+    #header-right {
+      .header-login {
+        padding: 0 10px 0 10px;
+        font-size: 14px;
+        font-weight: 500;
         cursor: pointer;
+      }
+      a:first-child {
+        border-right: 1px solid var(--header-border-color-gray);
+      }
+      .dark-mode {
+        margin-left: 20px;
       }
     }
   }

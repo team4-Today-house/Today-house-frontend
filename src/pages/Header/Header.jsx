@@ -25,48 +25,53 @@ function Header() {
     }}>
       <WrapContainer>
         <nav className='header-content'>
-          <div className='header-left'>
-            <div className='main-img'>
+          <div id='header-left'>
+            <div id='main-logo-img'>
               <span>
-                <Mainimg text={true} height={"40"}/>
+                <Mainimg text={true} height={"43"}/>
               </span>
             </div>
             <Link to={"/"}>
-              <span>
-                <label 
-                  className='header-select'
-                  style={{color: color}}
-                  onMouseEnter={hoverHandler}
-                  onMouseLeave={unhoverHandler}
-                >
-                  커뮤니티
-                </label>
-                <label 
-                  className='header-select'
-                  style={{color: color}}
-                  onMouseEnter={hoverHandler}
-                  onMouseLeave={unhoverHandler}
-                >
-                  쇼핑
-                </label>
-                <label 
-                  className='header-select'
-                  style={{color: color}}
-                  onMouseEnter={hoverHandler}
-                  onMouseLeave={unhoverHandler}
-                >
-                  이사/시공/수리
-                </label>
-              </span>
+              <label 
+                className='header-select'
+                style={{color: color}}
+                onMouseEnter={hoverHandler}
+                onMouseLeave={unhoverHandler}
+              >
+                커뮤니티
+              </label>
+            </Link>
+            <Link to={"/"}>
+              <label 
+                className='header-select'
+                style={{color: color}}
+                onMouseEnter={hoverHandler}
+                onMouseLeave={unhoverHandler}
+              >
+                쇼핑
+              </label>
+            </Link>
+            <Link to={"/"}>
+              <label 
+                className='header-select'
+                style={{color: color}}
+                onMouseEnter={hoverHandler}
+                onMouseLeave={unhoverHandler}
+              >
+                이사/시공/수리
+              </label>
             </Link>
           </div>
-          <div className='header-right'>
-            <Link to={"/login"}>
-              <span id='header-login'>
-                <label style={{color: color}}>로그인</label>
-              </span>
-            </Link>
+          <div id='header-right'>
             <span>
+              <Link to={"/login"}>
+                <label className='header-login' style={{color: color}}>로그인</label>
+              </Link>
+              <Link to={"/signup"}>
+                <label className='header-login' style={{color: color}}>회원가입</label>
+              </Link>
+            </span>
+            <span className='dark-mode'>
               <DarkMode/>
             </span>
           </div>
