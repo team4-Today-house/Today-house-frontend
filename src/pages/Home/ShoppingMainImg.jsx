@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
 import { shoppingMainImgData } from './shoppingMainImgData';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function ShoppingMainImg() {
   return (
@@ -16,7 +18,6 @@ function ShoppingMainImg() {
             </a>
         )})
       }
-      
     </>
   )
 };
@@ -39,9 +40,18 @@ export const SimpleSlider = () => {
 
   return (
     <div>
-      <h2> Single Item</h2>
       <Slider {...settings}>
-        <div>
+      {
+        shoppingMainImgData.map((item) => {
+          return (
+            <a href={item.Url} key={item.id}>
+              <ShoppingMainImgDiv>
+                <img src={item.imgUrl} alt="" />
+              </ShoppingMainImgDiv>
+            </a>
+        )})
+      }
+        {/* <div>
           <h3>1</h3>
         </div>
         <div>
@@ -58,7 +68,7 @@ export const SimpleSlider = () => {
         </div>
         <div>
           <h3>6</h3>
-        </div>
+        </div> */}
       </Slider>
     </div>
   );

@@ -1,12 +1,15 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { HeaderWrap } from './StyledHeader';
+import { ThemeContext } from '../../utils/context';
+import { cookies, getCookie } from '../../shared/cookies';
 import WrapContainer from '../../components/WrapContainer'
 import Mainimg from '../../components/Mainimg';
-import { HeaderWrap } from './StyledHeader';
 import DarkMode, { darkMode } from '../../components/DarkMode';
-import { ThemeContext } from '../../utils/context';
 
 function Header() {
+  const navi = useNavigate();
+  const token = getCookie("token");
   const { isDark } = useContext(ThemeContext);
   let bgc = darkMode(isDark);
   let color = darkMode(!isDark);
@@ -16,6 +19,12 @@ function Header() {
   const unhoverHandler = (e) => {
     e.target.style["color"] = color;
   }
+
+  const delHandler = () => {
+    cookies.remove("token");
+    window.location.reload();
+    navi("/");
+  };
 
   return (
     <HeaderWrap style={{
@@ -64,12 +73,34 @@ function Header() {
           </div>
           <div id='header-right'>
             <span>
-              <Link to={"/login"}>
-                <label className='header-login' style={{color: color}}>로그인</label>
-              </Link>
-              <Link to={"/signup"}>
-                <label className='header-login' style={{color: color}}>회원가입</label>
-              </Link>
+              {
+                token ? (
+                  <label 
+                    className='header-login'
+                    style={{color: color}}
+                    onClick={(e) => {
+                      delHandler(e);
+                      navi("/");
+                    }}
+                  >
+                    로그아웃
+                  </label>
+                  
+                ) : (
+                  <>
+                    <Link to={"/login"}>
+                      <label className='header-login' style={{color: color}}>
+                        로그인
+                      </label>
+                    </Link>
+                    <Link to={"/signup"}>
+                      <label className='header-login' style={{color: color}}>
+                        회원가입
+                      </label>
+                    </Link>
+                  </>
+                )
+              }
             </span>
             <span className='dark-mode'>
               <DarkMode/>
