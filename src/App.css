@@ -1,7 +1,9 @@
 :root {
   /* color */
   --main-color-skyblue : #00bbff;
+  --main-color-gray : #ececec;
   --brand-name-color-gray : #757575;
+  --footer-text-color : #4b4b4b;
   --product-title-color-gray : #616161;
   --review-color-gray : #C3C3C3;
   --sceleton-color-gray : #ececec;

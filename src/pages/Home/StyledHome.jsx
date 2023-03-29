@@ -13,8 +13,6 @@ export const HomeWrap = styled.div`
 export const ShoppingMainImgContainer = styled.div`
   width: 100vw;
   min-width: 1135px;
-  display: flex;
-  justify-content: center;
   margin-bottom: 40px;
 `;
 

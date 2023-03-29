@@ -2,72 +2,47 @@ import React from "react";
 import styled from "styled-components";
 import Slider from "react-slick";
 import { shoppingMainImgData } from "./shoppingMainImgData";
+import { MainShoppingImgSkeleton } from "../../components/Loading";
+import "./slick/slick.css";
+import "./slick/slick-theme.css";
 
-function ShoppingMainImg() {
-  return (
-    <>
-      {shoppingMainImgData.map((item) => {
-        return (
-          <a href={item.Url} key={item.id}>
-            <ShoppingMainImgDiv>
-              <img src={item.imgUrl} alt="" />
-            </ShoppingMainImgDiv>
-          </a>
-        );
-      })}
-    </>
-  );
-}
-
-const ShoppingMainImgDiv = styled.div`
-  img {
-    height: 380px;
-    object-fit: cover;
-  }
-`;
-
-export const SimpleSlider = () => {
+export const ShoppingMainImg = () => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
+    autoplay: true,
     speed: 500,
+    centerMode: true,
+    centerPadding: '0px',
     slidesToShow: 1,
     slidesToScroll: 1,
   };
 
   return (
-    <div>
+    <ShoppingMainImgDiv>
       <Slider {...settings}>
-        {shoppingMainImgData.map((item) => {
+        { !shoppingMainImgData && <MainShoppingImgSkeleton />}
+        { shoppingMainImgData?.map((item) => {
           return (
-            <a href={item.Url} key={item.id}>
-              <ShoppingMainImgDiv>
-                <img src={item.imgUrl} alt="" />
-              </ShoppingMainImgDiv>
-            </a>
+            <div>
+              <a href={item.Url} key={item.id}>
+                <ShoppingMainImgDiv>
+                  <img src={item.imgUrl} alt="" />
+                </ShoppingMainImgDiv>
+              </a>
+            </div>
           );
         })}
-        {/* <div>
-          <h3>1</h3>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div> */}
       </Slider>
-    </div>
+    </ShoppingMainImgDiv>
   );
 };
+
+const ShoppingMainImgDiv = styled.div`
+  /* img {
+    height: 380px;
+    object-fit: cover;
+  } */
+`;
 
 export default ShoppingMainImg;

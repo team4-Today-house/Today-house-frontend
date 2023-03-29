@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { MainShoppingImgSkeleton, Skeletons } from "../../components/Loading";
+import { Skeletons } from "../../components/Loading";
 import WrapContainer from "../../components/WrapContainer";
 import Header from "../Header/Header";
 import ShoppingMainImg from "./ShoppingMainImg";
@@ -36,6 +36,7 @@ function Home() {
   }
 
   return (
+    <>
     <HomeWrap
       style={{
         backgroundColor: bgc,
@@ -46,7 +47,6 @@ function Home() {
       <Header />
       {/* 쇼핑 메인 이미지 */}
       <ShoppingMainImgContainer>
-        <MainShoppingImgSkeleton />
         <ShoppingMainImg />
       </ShoppingMainImgContainer>
       {/* 본문 */}
@@ -92,6 +92,7 @@ function Home() {
         </div>
       </WrapContainer>
     </HomeWrap>
+    </>
   );
 }
 
