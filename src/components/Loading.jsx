@@ -36,13 +36,7 @@ export const ProductSkeleton = () => {
   );
 };
 
-export const MainShoppingImgSkeleton = () => {
-  return (
-    <MainShoppingImgSkeletonWrap/>
-  );
-};
-
-const MainShoppingImgSkeletonWrap = styled.div`
+export const MainShoppingImgSkeleton = styled.div`
   width: 1000vw;
   height: 380px;
   background-color: var(--sceleton-color-gray);
