@@ -22,8 +22,8 @@ function Header() {
 
   const delHandler = () => {
     cookies.remove("token");
-    window.location.reload();
     navi("/");
+    window.location.reload();
   };
 
   return (

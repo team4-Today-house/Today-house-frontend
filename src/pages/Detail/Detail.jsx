@@ -9,14 +9,33 @@ import { useParams } from "react-router-dom";
 import api from "../../axios/api";
 import { cookies } from "../../shared/cookies";
 import Header from "../Header/Header";
+import { CommentList } from "./CommentList";
+import { CommentStyle } from "./CommentStyle";
+import { DetailContain } from "./DetailContain";
+import { Price } from "./Price";
+import Button, { btnStyle } from "../../components/Button";
 
 function Detail() {
   const queryClient = useQueryClient();
   const { id } = useParams();
+  // const [isEditMode, setIsEditMode] = useState(false);
+  const [numid, setNumid] = useState("");
   const [comments, setComments] = useState({
     contents: "",
-    star: "",
+    id: numid,
   });
+  const token = cookies.get("loginId");
+  console.log(token);
+
+  const [newComments, setNewComments] = useState({
+    contents: "",
+  });
+
+  const onItemNum = (id) => {
+    setNumid(id);
+  };
+
+  const [edit, setEdit] = useState(false);
 
   const changeInputHandler = (event) => {
     const { name, value } = event.target;
@@ -54,6 +73,27 @@ function Detail() {
       queryClient.invalidateQueries(["getcomments"]);
     },
   });
+  //댓글 수정
+  const { mutate: updateComment } = useMutation({
+    mutationFn: async (payload) => {
+      console.log(payload);
+      const token = cookies.get("token");
+      await api.patch(
+        `/api/detailPage/${id}/comment/${payload[1].commentId}`,
+        {
+          contents: payload[0].contents,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["getcomments"]);
+    },
+  });
 
   //물건 조회
   const { data, isLoading } = useQuery({
@@ -61,11 +101,9 @@ function Detail() {
     queryFn: async () => {
       if (id < 5) {
         const { data } = await api.get(`/api/detailPage/hotitem/${id}`);
-        console.log(data);
         return data;
       } else {
         const { data } = await api.get(`/api/detailPage/product/${id}`);
-        console.log(data);
         return data;
       }
     },
@@ -84,21 +122,25 @@ function Detail() {
     return <div>로딩중...</div>;
   }
   console.log(comments);
+  console.log(newComments);
 
   return (
     <>
       <Header />
-      <div>
-        <img src={`${data.img}`} alt={data.title} />
-      </div>
-      <div>
-        <div>{data.title}</div>
+      <DetailContain>
         <div>
-          {data.discountrate}
-          {data.price}
+          <img src={`${data.img}`} alt={data.title} />
         </div>
-      </div>
-      <form
+        <Price>
+          <div style={{ fontSize: "15px", color: "gray" }}>
+            {data.brandname}
+          </div>
+          <div>{data.title}</div>
+          <div>{data.discountrate}</div>
+          <div style={{ fontSize: "30px" }}>{data.price}</div>
+        </Price>
+      </DetailContain>
+      <CommentStyle
         onClick={(e) => {
           e.preventDefault();
           // mutate(comments);
@@ -107,30 +149,84 @@ function Detail() {
         <h2>리뷰작성하기</h2>
         <div>
           <input
+            style={{ width: "500px", height: "150px" }}
             type="text"
             value={comments.contents}
             name="contents"
             required
             onChange={changeInputHandler}
           />
-          <input
-            type="text"
-            value={comments.star}
-            name="star"
-            required
-            onChange={changeInputHandler}
-          />
-          <button onClick={() => mutate(comments)}>리뷰작성 완료</button>
         </div>
-      </form>
+        <Button
+          width={"150px"}
+          style={btnStyle.blueBtn}
+          onClick={() => mutate(comments)}
+        >
+          리뷰작성 완료
+        </Button>
+      </CommentStyle>
       <div>
         {contents.data.map((item) => {
           return (
-            <div key={item.commentId}>
-              <div>{item.comment}</div>
-              <div>{item.star}</div>
-              <button onClick={() => deletComment(item.commentId)}>삭제</button>
-            </div>
+            <CommentList key={item.commentId}>
+              {edit && item.commentId === numid ? (
+                <div>
+                  <input
+                    type="text"
+                    value={newComments.contents}
+                    name="contents"
+                    onChange={(e) =>
+                      setNewComments({
+                        ...newComments,
+                        contents: e.target.value,
+                      })
+                    }
+                    required
+                  />
+                </div>
+              ) : (
+                <>
+                  <div>{item.loginId}</div>
+                  <div>{item.comment}</div>
+                </>
+              )}
+              {edit && item.commentId === numid ? (
+                <>
+                  <Button
+                    width={"100px"}
+                    style={btnStyle.blueBtn}
+                    onClick={() => {
+                      updateComment([newComments, item]);
+                      if (newComments.contents !== "") {
+                        setEdit(!edit);
+                      }
+                    }}
+                  >
+                    완료
+                  </Button>
+                </>
+              ) : (
+                <div>
+                  <Button
+                    width={"100px"}
+                    style={btnStyle.blueBtn}
+                    onClick={() => {
+                      onItemNum(item.commentId);
+                      setEdit(!edit);
+                    }}
+                  >
+                    수정
+                  </Button>
+                  <Button
+                    width={"100px"}
+                    style={btnStyle.blueBtn}
+                    onClick={() => deletComment(item.commentId)}
+                  >
+                    삭제
+                  </Button>
+                </div>
+              )}
+            </CommentList>
           );
         })}
       </div>
