@@ -13,7 +13,7 @@ export function Button({ children, style, width, height, onClick }) {
   style.width = width;
   style.height = height;
 
-  switch(style.style) {
+  switch (style.style) {
     case "blueBtn":
       style.backgroundColor = isHover ? "#0480ad" : "#00bbff";
       break;
@@ -22,8 +22,8 @@ export function Button({ children, style, width, height, onClick }) {
   }
 
   return (
-    <StButton 
-      style={style} 
+    <StButton
+      style={style}
       onClick={onClick}
       onMouseEnter={mouseEnterHandler}
       onMouseLeave={mouseLeaveHandler}
@@ -59,7 +59,7 @@ export const btnStyle = {
     border: "none",
     borderRadius: "4px",
     color: "#fff",
-  }
-}
+  },
+};
 
 export default Button;

@@ -12,7 +12,7 @@ function KakaoLoginPage() {
   const kakaoLogin = async () => {
     try {
       const res = await axios.get(
-        `http://3.38.244.133:8080/kakao/callback?code=${code}`
+        `${process.env.REACT_APP_SERVER_URL}/kakao/callback?code=${code}`
       );
       const newtoken = cookies.set(
         "token",
