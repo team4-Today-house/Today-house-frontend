@@ -25,50 +25,68 @@ function Login() {
   };
 
   return (
-    <LoginContain>
-      <LoginBox
-        onSubmit={async (e) => {
-          e.preventDefault();
-          await dispacth(__loginUser(user));
-          navi("/");
-        }}
-      >
-        <div>
-          <Mainimg height={"50"} logo={true} text={true} />
-        </div>
-        <div>
-          <InputStyle
-            type="text"
-            value={user.loginId}
-            required
-            name="loginId"
-            onChange={chgInputHandler}
-            placeholder="아이디"
-          />
-          <InputStyle
-            ype="password"
-            value={user.password}
-            required
-            name="password"
-            onChange={chgInputHandler}
-            placeholder="비밀번호"
-          />
-        </div>
-        <div>
-          <Button style={btnStyle.loginBtn} width={"100%"}>
-            로그인
-          </Button>
-        </div>
-        <div>
-          <Link to={"/signup"}>회원가입</Link>
-        </div>
-        <div>
-          <Sns />
-        </div>
-      </LoginBox>
-    </LoginContain>
+    <LoginWrap>
+      <LoginContain>
+        <LoginBox
+          onSubmit={async (e) => {
+            e.preventDefault();
+            await dispacth(__loginUser(user));
+            navi("/");
+          }}
+        >
+          <MainImgWrap>
+            <Mainimg height={"50"} logo={true} text={true} />
+          </MainImgWrap>
+          <div>
+            <InputStyle
+              type="text"
+              value={user.loginId}
+              required
+              name="loginId"
+              onChange={chgInputHandler}
+              placeholder="아이디"
+            />
+            <InputStyle
+              ype="password"
+              value={user.password}
+              required
+              name="password"
+              onChange={chgInputHandler}
+              placeholder="비밀번호"
+            />
+          </div>
+          <div>
+            <Button style={btnStyle.loginBtn} width={"100%"}>
+              로그인
+            </Button>
+          </div>
+          <div>
+            <Link to={"/signup"}>회원가입</Link>
+          </div>
+          <SnsWrap>
+            <Sns />
+          </SnsWrap>
+        </LoginBox>
+      </LoginContain>
+    </LoginWrap>
   );
 }
+
+const MainImgWrap = styled.div`
+  margin-bottom: 30px;
+`;
+
+const SnsWrap = styled.div`
+  margin-top: 20px;
+`;
+
+const LoginWrap = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: var(--login-color-gray);
+`;
 
 const LoginContain = styled.div`
   display: flex;
