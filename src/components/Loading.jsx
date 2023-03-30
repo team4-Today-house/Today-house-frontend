@@ -37,8 +37,9 @@ export const ProductSkeleton = () => {
 };
 
 export const MainShoppingImgSkeleton = styled.div`
-  width: 1000vw;
+  width: 200vw;
   height: 380px;
+  position: absolute;
   background-color: var(--sceleton-color-gray);
 `;
 

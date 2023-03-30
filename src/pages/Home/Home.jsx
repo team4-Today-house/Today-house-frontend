@@ -32,7 +32,7 @@ function Home() {
   }, []);
 
   if (getProductsIsError) {
-    alert(getProductsErrorMsg);
+    console.log(getProductsErrorMsg);
   }
 
   return (

@@ -1,10 +1,9 @@
 import React from "react";
-import styled from "styled-components";
 import Slider from "react-slick";
 import { shoppingMainImgData } from "./shoppingMainImgData";
-import { MainShoppingImgSkeleton } from "../../components/Loading";
 import "./slick/slick.css";
 import "./slick/slick-theme.css";
+import { ShoppingMainImgDiv } from "./StyledHome";
 
 export const ShoppingMainImg = () => {
   const settings = {
@@ -13,7 +12,7 @@ export const ShoppingMainImg = () => {
     autoplay: true,
     speed: 500,
     centerMode: true,
-    centerPadding: '0px',
+    centerPadding: '0',
     slidesToShow: 1,
     slidesToScroll: 1,
   };
@@ -21,16 +20,13 @@ export const ShoppingMainImg = () => {
   return (
     <ShoppingMainImgDiv>
       <Slider {...settings}>
-        { !shoppingMainImgData && <MainShoppingImgSkeleton />}
         { shoppingMainImgData?.map((item) => {
           return (
-            <div>
-              <a href={item.Url} key={item.id}>
-                <ShoppingMainImgDiv>
-                  <img src={item.imgUrl} alt="" />
-                </ShoppingMainImgDiv>
-              </a>
-            </div>
+            <a href={item.Url} key={item.id}>
+              <div className="main-img-thumb">
+                <img src={item.imgUrl} alt="" />
+              </div>
+            </a>
           );
         })}
       </Slider>
@@ -38,11 +34,5 @@ export const ShoppingMainImg = () => {
   );
 };
 
-const ShoppingMainImgDiv = styled.div`
-  /* img {
-    height: 380px;
-    object-fit: cover;
-  } */
-`;
 
 export default ShoppingMainImg;
