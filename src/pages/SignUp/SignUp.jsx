@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { cookies } from "../../shared/cookies";
 import { useEffect } from "react";
@@ -8,6 +6,7 @@ import Mainimg from "../../components/Mainimg";
 import Sns from "../Login/Sns";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import api from "../../axios/api";
 
 function SignUp() {
   const navi = useNavigate();
@@ -32,7 +31,7 @@ function SignUp() {
     try {
       if (user.password === user.passwordCheck) {
         console.log(user);
-        await axios.post("http://3.38.244.133:8080/api/user/signup", user);
+        await api.post(`/api/user/signup`, user);
         navi("/login");
       }
     } catch (e) {
@@ -53,9 +52,9 @@ function SignUp() {
 
   return (
     <>
-      <header>
-        <Mainimg />
-      </header>
+      <SignUpHeader>
+        <Mainimg width={"100"} logo={true} text={true} />
+      </SignUpHeader>
       <SignContain>
         <SignBox onSubmit={submitButtonHandler}>
           <SignMain>회원가입</SignMain>
@@ -71,6 +70,7 @@ function SignUp() {
               name="loginId"
               onChange={chgInputHandler}
               placeholder="알파벳 소문자/숫자0~9/아이디 4~10자리"
+              placeholder="알파벳 소문자/숫자 0~9/아이디 4~10자리"
             />
           </div>
           <div>
@@ -116,6 +116,10 @@ function SignUp() {
     </>
   );
 }
+
+const SignUpHeader = styled.div`
+  padding: 30px 0 0 20px;
+`;
 
 const SignContain = styled.div`
   display: flex;
