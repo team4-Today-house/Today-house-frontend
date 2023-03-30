@@ -12,10 +12,23 @@ export const HomeWrap = styled.div`
 
 export const ShoppingMainImgContainer = styled.div`
   width: 100vw;
-  min-width: 1135px;
-  display: flex;
-  justify-content: center;
+  height: 380px;
   margin-bottom: 40px;
+  display: block;
+  background-color: #fff;
+`;
+
+export const ShoppingMainImgDiv = styled.div`
+  .main-img-thumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 1918px;
+      height: 380px;
+      object-fit: cover;
+    }
+  }
 `;
 
 export const CategoryWrap = styled.nav`
