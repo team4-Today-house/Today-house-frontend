@@ -53,11 +53,7 @@ function SignUp() {
   return (
     <>
       <SignUpHeader>
-        <Mainimg 
-          width={"100"}
-          logo={true}
-          text={true}
-        />
+        <Mainimg width={"100"} logo={true} text={true} />
       </SignUpHeader>
       <SignContain>
         <SignBox onSubmit={submitButtonHandler}>
@@ -73,7 +69,7 @@ function SignUp() {
               required
               name="loginId"
               onChange={chgInputHandler}
-              placeholder="알파벳 소문자/숫자 0~9/아이디 4~10자리"
+              placeholder="알파벳 소문자/숫자0~9/아이디 4~10자리"
             />
           </div>
           <div>
@@ -84,7 +80,7 @@ function SignUp() {
               required
               name="email"
               onChange={chgInputHandler}
-              placeholder="알파벳 소문자/숫자 0~9/아이디 4~10자리"
+              placeholder="알파벳 소문자/숫자0~9/아이디 4~10자리"
             />
           </div>
           <div>
@@ -98,7 +94,7 @@ function SignUp() {
               required
               name="password"
               onChange={chgInputHandler}
-              placeholder="알파벳 소문자/숫자 0~9/아이디 4~10자리"
+              placeholder="알파벳 소문자/숫자0~9/아이디 4~10자리"
             />
           </div>
           <InputLabel>비밀번호확인</InputLabel>
@@ -108,7 +104,7 @@ function SignUp() {
             required
             name="passwordCheck"
             onChange={chgInputHandler}
-            placeholder="알파벳 소문자/숫자 0~9/아이디 4~10자리"
+            placeholder="알파벳 소문자/숫자0~9/아이디 4~10자리"
           />
           <div>
             <SignUpButton type="submit">회원가입완료</SignUpButton>
@@ -122,7 +118,7 @@ function SignUp() {
 
 const SignUpHeader = styled.div`
   padding: 30px 0 0 20px;
-`
+`;
 
 const SignContain = styled.div`
   display: flex;
