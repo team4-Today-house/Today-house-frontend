@@ -70,7 +70,6 @@ function SignUp() {
               name="loginId"
               onChange={chgInputHandler}
               placeholder="알파벳 소문자/숫자0~9/아이디 4~10자리"
-              placeholder="알파벳 소문자/숫자 0~9/아이디 4~10자리"
             />
           </div>
           <div>

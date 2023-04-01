@@ -47,7 +47,7 @@ function Login() {
               placeholder="아이디"
             />
             <InputStyle
-              ype="password"
+              type="password"
               value={user.password}
               required
               name="password"
